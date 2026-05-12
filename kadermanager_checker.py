@@ -74,7 +74,7 @@ def get_kadermanager_data():
 
         missing_data_rows = []
         now = datetime.now()
-        deadline = now + timedelta(hours=48)
+        deadline = now + timedelta(days=7)
 
         for url in event_urls:
             # Nur URLs prüfen, die wirklich eine ID am Ende haben (Zahlen)
@@ -110,7 +110,7 @@ def get_kadermanager_data():
 
             # Zeit-Check: Innerhalb der nächsten 48 Stunden?
             if now < event_date <= deadline:
-                print(f"   -> TREFFER: Event am {raw_datetime} liegt im 48h-Fenster!")
+                print(f"   -> TREFFER: Training am {raw_datetime} wird erfasst!")
                 
                 event_row = [event_date.strftime("%d.%m.%Y")]
                 

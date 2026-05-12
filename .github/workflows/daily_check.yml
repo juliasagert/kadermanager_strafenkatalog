@@ -2,8 +2,8 @@ name: Kadermanager Daily Check
 
 on:
   schedule:
-    # Führt das Skript jeden Tag um 06:00 UTC aus (ca. 07:00/8:00 Uhr deutsche Zeit)
-    - cron: '0 6 * * *'
+    # Führt das Skript jeden Samstag um 06:00 UTC aus (ca. 07:00/8:00 Uhr deutsche Zeit)
+    - cron: '0 6 * * 6'
   workflow_dispatch: # Erlaubt es dir, das Skript manuell per Button zu starten
 
 jobs:
