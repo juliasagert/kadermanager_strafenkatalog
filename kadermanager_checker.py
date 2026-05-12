@@ -21,7 +21,7 @@ RELEVANTE_KLASSEN = ["player_type_1", "player_type_4", "player_type_5"]
 def get_kadermanager_data():
     with sync_playwright() as p:
         # headless=False damit du kontrollieren kannst, was passiert
-        browser = p.chromium.launch(headless=False) 
+        browser = p.chromium.launch(headless=True) 
         context = browser.new_context()
         page = context.new_page()
 

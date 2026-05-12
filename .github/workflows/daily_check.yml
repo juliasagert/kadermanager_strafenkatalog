@@ -1,0 +1,36 @@
+name: Kadermanager Daily Check
+
+on:
+  schedule:
+    # Führt das Skript jeden Tag um 06:00 UTC aus (ca. 07:00/8:00 Uhr deutsche Zeit)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Erlaubt es dir, das Skript manuell per Button zu starten
+
+jobs:
+  run-checker:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+        # Wir installieren Playwright und die Browser-Engines in der Cloud
+      run: |
+        pip install playwright gspread oauth2client python-dotenv
+        playwright install chromium
+
+    - name: Run script
+      env:
+        # Hier verknüpfen wir die GitHub Secrets mit dem Skript
+        KADER_USER: ${{ secrets.KADER_USER }}
+        KADER_PW: ${{ secrets.KADER_PW }}
+        KADER_URL: ${{ secrets.KADER_URL }}
+        GOOGLE_SHEET_NAME: ${{ secrets.GOOGLE_SHEET_NAME }}
+        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+      run: python kadermanager_checker.py
