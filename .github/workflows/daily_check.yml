@@ -34,3 +34,16 @@ jobs:
         GOOGLE_SHEET_NAME: ${{ secrets.GOOGLE_SHEET_NAME }}
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
       run: python kadermanager_checker.py
+
+    - name: Send Mail on Failure
+      if: failure() # Wird nur ausgeführt, wenn der Schritt davor gecrasht ist
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        username: ${{ secrets.MAIL_USERNAME }}
+        password: ${{ secrets.MAIL_PASSWORD }}
+        subject: "❌ Kadermanager Checker Fehler"
+        to: "julia.sagert@gmail.com"
+        from: "GitHub Actions Bot"
+        body: "Der Kadermanager-Check ist fehlgeschlagen. Bitte prüfe die Logs auf GitHub!"
