@@ -1,0 +1,21 @@
+# Google Cloud Credentials
+service_account_key.json
+
+# Python Virtuelle Umgebung
+venv/
+ENV/
+.env
+
+# Kadermanager Zugangsdaten
+config.py
+credentials.py
+
+# Python Cache & Systemdateien
+__pycache__/
+*.py[cod]
+*$py.class
+.DS_Store
+thumbs.db
+
+# Playwright Browser-Downloads
+pw-browser/
