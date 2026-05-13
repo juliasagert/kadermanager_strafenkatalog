@@ -6,7 +6,7 @@ It consists of two main modules:
 1.  **Checker:** Scrapes undecided players and logs them into a **Google Sheet** for long-term tracking.
 2.  **Reminder:** Automatically sends **Email Notifications** to undecided players via **Brevo (SMTP)**.
 
-## ✨ Features
+## Features
 
 - **Automated Scraping:** Uses Playwright to navigate Kadermanager and identify players who haven't responded to event invitations within a defined timeframe (next 48h to 8 days).
 - **Personalized Email Reminders:**
@@ -19,7 +19,7 @@ It consists of two main modules:
   - **Safety-first:** Automatically blocks outgoing "Accept/Decline" network requests to prevent accidental status changes.
 - **GitHub Actions Ready:** Fully automated via scheduled workflows (CRON).
 
-## 🛠 Tech Stack
+## Tech Stack
 
 - **Python 3.10+**
 - **Playwright** (Browser Automation)
@@ -27,13 +27,13 @@ It consists of two main modules:
 - **gspread** (Google Sheets API)
 - **GitHub Actions** (Automation & Scheduling)
 
-## 📋 Prerequisites
+## Prerequisites
 
 1.  **Google Service Account:** Required for the Checker to access Google Sheets. Download your `service_account_key.json`.
 2.  **Brevo Account:** Required for the Reminder. You need a **verified sender email** and a generated **SMTP Key**.
 3.  **Kadermanager Credentials:** Valid login for your team's page.
 
-## ⚙️ Setup & Installation
+## Setup & Installation
 
 1.  **Clone the repository:**
     ```bash
@@ -63,7 +63,7 @@ It consists of two main modules:
     # Sheets Config (Checker only)
     GOOGLE_SHEET_NAME=Your_Sheet_Name
 
-## 🤖 Automation with GitHub Actions
+## Automation with GitHub Actions
 
 The script is configured to run via GitHub Actions. To set this up:
 
@@ -74,7 +74,7 @@ The script is configured to run via GitHub Actions. To set this up:
    - `MAIL_USERNAME` & `MAIL_PASSWORD`: For failure notifications (Gmail App-Password required).
    - `BREVO_USERNAME`, `BREVO_PASSWORD`, `BREVO_SERVER`, `BREVO_PORT`: For sending emails via Brevo
 
-## 🛡 Security Note
+## Security Note
 
 - **Headless Mode:** Ensure `headless=True` is set in the script for cloud execution.
 - **Network Filter:** The script includes a route-abort filter to ensure it remains "read-only" on Kadermanager.
@@ -82,6 +82,6 @@ The script is configured to run via GitHub Actions. To set this up:
 - **IP Protection:** In Brevo, ensure the IP-restriction is disabled, as GitHub Actions uses dynamic IP addresses.
 - **Verified Sender:** You must verify your sender address (e.g., your-name@gmail.com) in the Brevo dashboard, otherwise, emails will be rejected.
 
-## 📄 License
+## License
 
 This project is for private use within the team. Use responsibly.
