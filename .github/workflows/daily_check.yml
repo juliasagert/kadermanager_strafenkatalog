@@ -47,3 +47,4 @@ jobs:
         to: "julia.sagert@gmail.com"
         from: "GitHub Actions Bot"
         body: "Der Kadermanager-Check ist fehlgeschlagen. Bitte prüfe die Logs auf GitHub!"
+        
