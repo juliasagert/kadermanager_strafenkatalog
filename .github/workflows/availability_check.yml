@@ -1,4 +1,4 @@
-name: Kadermanager Daily Check
+name: Kadermanager Check
 
 on:
   schedule:

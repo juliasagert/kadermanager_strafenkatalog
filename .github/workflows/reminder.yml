@@ -1,0 +1,32 @@
+name: Friday Email Reminder
+
+on:
+  schedule:
+    # Führt das Skript jeden Freitag um 07:00 UTC aus (ca. 08:00/9:00 Uhr deutsche Zeit)
+    - cron: '0 7 * * 5'
+  workflow_dispatch: # Zum manuellen Testen
+
+jobs:
+  send-reminders:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Install dependencies
+        run: |
+          pip install playwright python-dotenv
+          playwright install chromium
+      - name: Run Reminder Script
+        env:
+          KADER_USER: ${{ secrets.KADER_USER }}
+          KADER_PW: ${{ secrets.KADER_PW }}
+          KADER_URL: ${{ secrets.KADER_URL }}
+          MAIL_USERNAME: ${{ secrets.BREVO_USERNAME }}
+          MAIL_PASSWORD: ${{ secrets.BREVO_PASSWORD }}
+          SMTP_SERVER: ${{ secrets.BREVO_SERVER }}
+          SMTP_PORT: ${{ secrets.BREVO_PORT }}
+          VERIFIED_SENDER: ${{ secrets.KADER_USER }}
+        run: python kadermanager_reminder.py
