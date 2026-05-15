@@ -24,8 +24,8 @@ jobs:
           KADER_USER: ${{ secrets.KADER_USER }}
           KADER_PW: ${{ secrets.KADER_PW }}
           KADER_URL: ${{ secrets.KADER_URL }}
-          MAIL_USERNAME: ${{ secrets.BREVO_USERNAME }}
-          MAIL_PASSWORD: ${{ secrets.BREVO_PASSWORD }}
+          BREVO_USERNAME: ${{ secrets.BREVO_USERNAME }}
+          BREVO_PASSWORD: ${{ secrets.BREVO_PASSWORD }}
           BREVO_SERVER: ${{ secrets.BREVO_SERVER }}
           BREVO_PORT: ${{ secrets.BREVO_PORT }}
           VERIFIED_SENDER: ${{ secrets.KADER_USER }}
