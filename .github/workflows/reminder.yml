@@ -26,7 +26,7 @@ jobs:
           KADER_URL: ${{ secrets.KADER_URL }}
           MAIL_USERNAME: ${{ secrets.BREVO_USERNAME }}
           MAIL_PASSWORD: ${{ secrets.BREVO_PASSWORD }}
-          SMTP_SERVER: ${{ secrets.BREVO_SERVER }}
-          SMTP_PORT: ${{ secrets.BREVO_PORT }}
+          BREVO_SERVER: ${{ secrets.BREVO_SERVER }}
+          BREVO_PORT: ${{ secrets.BREVO_PORT }}
           VERIFIED_SENDER: ${{ secrets.KADER_USER }}
         run: python kadermanager_reminder.py
