@@ -131,7 +131,7 @@ def run_reminder_process():
         # 4. LIVE E-Mail Abfrage
         if missing_players_to_notify:
             print(f"Navigiere zur Spielerliste für {len(missing_players_to_notify)} E-Mails...")
-            page.goto("https://hlcmuenchendamenlaxa.kadermanager.de/players", wait_until="networkidle")
+            page.goto("https://hlcmuenchendamenlaxa.kadermanager.de/players", wait_until="domcontentloaded")
             
             for player in missing_players_to_notify:
                 # Wir suchen das Div mit der ID (aus Screenshot 2)
