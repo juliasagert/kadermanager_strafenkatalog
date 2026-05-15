@@ -14,10 +14,10 @@ load_dotenv()
 KADER_USER = os.getenv("KADER_USER")
 KADER_PW = os.getenv("KADER_PW")
 KADER_URL = os.getenv("KADER_URL")
-MAIL_USERNAME = os.getenv("BREVO_USERNAME")
-MAIL_PASSWORD = os.getenv("BREVO_PASSWORD")
-SMTP_SERVER = os.getenv("BREVO_SERVER")
-SMTP_PORT = int(os.getenv("BREVO_PORT"))
+BREVO_USERNAME = os.getenv("BREVO_USERNAME")
+BREVO_PASSWORD = os.getenv("BREVO_PASSWORD")
+BREVO_SERVER = os.getenv("BREVO_SERVER")
+BREVO_PORT = int(os.getenv("BREVO_PORT"))
 VERIFIED_SENDER = os.getenv("KADER_USER")
 
 RELEVANTE_KLASSEN = ["player_type_1", "player_type_4", "player_type_5"]
@@ -40,9 +40,9 @@ Dein HLC-Trainings-Bot"""
 
     try:
         # Port 587 nutzt starttls()
-        server = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+        server = smtplib.SMTP(BREVO_SERVER, BREVO_PORT)
         server.starttls() 
-        server.login(MAIL_USERNAME, MAIL_PASSWORD)
+        server.login(BREVO_USERNAME, BREVO_PASSWORD)
         server.sendmail(VERIFIED_SENDER, to_email, msg.as_string())
         server.quit()
         print(f"   ✅ Mail gesendet an: {to_email}")
