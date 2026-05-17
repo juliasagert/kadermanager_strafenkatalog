@@ -141,7 +141,7 @@ def write_to_sheets(new_data):
         creds = ServiceAccountCredentials.from_json_keyfile_name(JSON_KEYFILE, scope)
     else:
         info = json.loads(os.getenv("GOOGLE_CREDENTIALS"))
-        creds = ServiceAccountCredentials.from_json_keyfile_name(info, scope)
+        creds = ServiceAccountCredentials.from_json_keyfile_dict(info, scope)
         
     client = gspread.authorize(creds)
     sheet = client.open(GOOGLE_SHEET_NAME).sheet1
